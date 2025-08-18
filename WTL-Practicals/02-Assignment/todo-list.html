@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ToDo List</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to right, rgb(173, 216, 230), rgb(0, 0, 139));
+      font-family: Arial, sans-serif;
+    }
+
+    #div1 {
+      max-width: 600px;
+      height: auto;
+      margin: 50px auto;
+      padding: 20px;
+      border-radius: 30px;
+      background-color: rgba(255, 255, 255, 0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    #h1 {
+      color: white;
+      margin-bottom: 20px;
+    }
+
+    #input1 {
+      padding-left: 20px;
+      background-color: rgba(169, 177, 235, 0);
+      width: 400px;
+      height: 30px;
+      border-radius: 10px;
+      border: 2px solid white;
+      color: white;
+    }
+
+    #addBtn {
+      margin-top: 20px;
+      height: 35px;
+      width: 80px;
+      color: white;
+      background-color: transparent;
+      border: 1px solid white;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      width: 100%;
+      margin-top: 20px;
+    }
+
+    li {
+      color: white;
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 10px;
+      margin: 5px 0;
+      border-radius: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .deleteBtn {
+      background-color: red;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div id="div1">
+    <h1 id="h1">ToDo List</h1>
+    <input id="input1" type="text" placeholder="Enter a task" />
+    <button id="addBtn">Add</button>
+    <ul id="taskList"></ul>
+  </div>
+
+  <script>
+    const input = document.getElementById('input1');
+    const addBtn = document.getElementById('addBtn');
+    const taskList = document.getElementById('taskList');
+
+    addBtn.addEventListener('click', () => {
+      const task = input.value.trim();
+      if (task !== '') {
+        const li = document.createElement('li');
+        li.textContent = task;
+
+        const delBtn = document.createElement('button');
+        delBtn.textContent = 'Delete';
+        delBtn.className = 'deleteBtn';
+        delBtn.onclick = () => {
+          taskList.removeChild(li);
+        };
+
+        li.appendChild(delBtn);
+        taskList.appendChild(li);
+        input.value = '';
+      } else {
+        alert('Please enter a task!');
+      }
+    });
+  </script>
+</body>
+</html>
