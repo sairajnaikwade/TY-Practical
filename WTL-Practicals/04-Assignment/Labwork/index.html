@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form>
+      Enter Name <input type="text" id="name" />
+      Enter Mark <input type="text" id="mark" />
+      <button id="btn" type="button">Submit</button>
+    </form>
+
+    <script>
+      async function sendData() {
+        const name = document.getElementById("name").value;
+        const mark = document.getElementById("mark").value;
+        const data = {
+          name1: name,
+          mark1: mark,
+        };
+
+        const response = await fetch("http://localhost/wtl/server.php", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        });
+
+        const responseData = await response.json();
+        console.log("Server :: ", responseData);
+      }
+
+      document.getElementById("btn").addEventListener("click", () => {
+        sendData();
+      });
+    </script>
+ </body>
+</html>
