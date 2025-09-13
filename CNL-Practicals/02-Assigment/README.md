@@ -85,3 +85,4 @@ Original Data (D1 D2 D3 D4): 1 0 1 1
 - This implementation demonstrates Hamming(7,4), suitable for 4-bit chunks. For full 7/8-bit ASCII, extension to Hamming(8,4) or similar is needed.
 - Only single-bit error detection and correction is supported.
 - Can be adapted for string or ASCII encoding by expanding logic.
+ <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&height=100&section=footer"/>
